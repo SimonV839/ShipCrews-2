@@ -11,7 +11,7 @@
        
        -- Create the table in the specified schema
        CREATE TABLE dbo.Crews (
-           CrewId INT NOT NULL PRIMARY KEY, -- primary key column
+           CrewId INT NOT NULL IDENTITY(1,1) PRIMARY KEY, -- primary key column
            Name VARCHAR(50)
 		          );
        GO
@@ -41,7 +41,7 @@
        
        -- Create the table in the specified schema
        CREATE TABLE dbo.People (
-           PersonId INT NOT NULL PRIMARY KEY, -- primary key column
+           PersonId INT NOT NULL IDENTITY(1,1) PRIMARY KEY, -- primary key column
            FirstName NVARCHAR(50),
 		   LastName NVARCHAR(50) NOT NULL, 
 		   RoleId INT FOREIGN KEY (RoleId) REFERENCES Roles(RoleId)
@@ -74,10 +74,11 @@
        
        -- Create the table in the specified schema
        CREATE TABLE dbo.CrewAssignments (
+	       Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY, -- primary key column -- needed for entity framework. a composite primary key does not work
            CrewId INT FOREIGN KEY (CrewId) REFERENCES Crews(CrewId),
 		   PersonId INT FOREIGN KEY (PersonId) REFERENCES People(PersonId),
-           PRIMARY KEY(CrewId, PersonId)
-		   -- CONSTRAINT CK_CrewAssignments_Unique UNIQUE(CrewId, PersonId) - EF needs a primary key
+           -- PRIMARY KEY(CrewId, PersonId) -- leads to probelms with entity framework
+		   CONSTRAINT CK_CrewAssignments_Unique UNIQUE(CrewId, PersonId)
 		   -- CONSTRAINT CK_CrewAssignments_NoOverlap CHECK (PersonId NOT IN (SELECT PersonId From CrewAssignments)) -- Subqueries are not allowed in this context. Only scalar expressions are allowed.
 		   );
        GO

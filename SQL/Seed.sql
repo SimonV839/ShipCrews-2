@@ -4,14 +4,14 @@ BEGIN TRANSACTION
 
 	   -- Populate the Crews table
 	   INSERT INTO dbo.Crews 
-			([CrewId], [Name])
+			([Name])
 		VALUES
-			(1, 'Alpha Even'),
-			(2, 'Beta Even'),
-			(3, 'Gamma Even'),
-			(10, 'Alpha Odd'),
-			(20, 'Beta Odd'),
-			(30, 'Gamma odd');
+			('Alpha Even'),
+			('Beta Even'),
+			('Gamma Even'),
+			('Alpha Odd'),
+			('Beta Odd'),
+			('Gamma odd');
 		
 		GO
 
@@ -27,16 +27,16 @@ BEGIN TRANSACTION
 	   -- Populate the People table
 	   DELETE FROM dbo.People 
 	   INSERT INTO dbo.People 
-			([PersonId], [FirstName], [LastName], [RoleId])
+			([FirstName], [LastName], [RoleId])
 		VALUES
-			(1, 'Tony', 'Best', 1),
-			(2, NULL, 'Doe', NULL),
-			(3, 'Tracy', 'Next', 3),
-			(4, 'OtherTracy', 'Next', 3),
-			(10, 'Tony', 'Next', 1),
-			(20, 'Gill', 'Doe', 2),
-			(30, 'Tracy', 'Next', 3),
-			(40, 'OtherOtherTracy', 'Next', 3)
+			('Tony', 'Best', 1), --1
+			(NULL, 'Doe', NULL), --2
+			('Tracy', 'Next', 3), --3
+			('OtherTracy', 'Next', 3), --4
+			('Tony', 'Next', 1), --10
+			('Gill', 'Doe', 2), --20
+			('Tracy', 'Next', 3), --30
+			('OtherOtherTracy', 'Next', 3) --40
 		--SELECT * FROM dbo.People;
 		GO
 
@@ -52,19 +52,19 @@ BEGIN TRANSACTION
 			(1, 2),
 			(1, 3),
 			(1, 4),
-			(1, 40),
-			(1, 20);
+			(1, 8),
+			(1, 6);
 		INSERT INTO dbo.CrewAssignments ([CrewId], [PersonId])
 			VALUES
-			(1, 10);
+			(1, 5);
 		INSERT INTO dbo.CrewAssignments ([CrewId], [PersonId])
 			VALUES
 			(2, 2);
 		INSERT INTO dbo.CrewAssignments ([CrewId], [PersonId])
 			VALUES
-			(3, 10),
-			(3, 20),
-			(3, 40);
+			(3, 5),
+			(3, 6),
+			(3, 8);
 		INSERT INTO dbo.CrewAssignments ([CrewId], [PersonId])
 			VALUES
 			(10, 1),

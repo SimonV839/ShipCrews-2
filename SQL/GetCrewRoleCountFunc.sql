@@ -1,6 +1,3 @@
-       --USE ShipCrews
-
-	   --DROP FUNCTION GetCrewRoleCountFunc
 	   CREATE FUNCTION GetCrewRoleCountFunc 
 		(@CrewId INT, @RoleId INT)
 		RETURNS INT
