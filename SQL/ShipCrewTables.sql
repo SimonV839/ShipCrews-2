@@ -12,7 +12,7 @@
        -- Create the table in the specified schema
        CREATE TABLE dbo.Crews (
            CrewId INT NOT NULL IDENTITY(1,1) PRIMARY KEY, -- primary key column
-           Name VARCHAR(50)
+           Name VARCHAR(50) UNIQUE
 		          );
        GO
 
