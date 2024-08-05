@@ -40,6 +40,11 @@ BEGIN TRANSACTION
 		--SELECT * FROM dbo.People;
 		GO
 
+	   INSERT INTO dbo.People 
+			([FirstName], [LastName], [RoleId])
+		VALUES
+			('Gill', 'Doe', 2) --20
+		GO
 		
 
 
